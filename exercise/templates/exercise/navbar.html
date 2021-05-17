@@ -1,0 +1,52 @@
+<!--Navbar Starts Here-->
+<style>
+    div.dropdown {
+        float:left;
+        overflow:hidden;
+    }
+    div.dropdown-content {
+        display:none;
+        position: absolute;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href = "{% url 'exercise:home' %}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href = "{% url 'exercise:directions' %}">How To Use The App</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'exercise:log_new' %}">Log Workout</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href = "{% url 'exercise:new_post' %}">Log New Post</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'exercise:my_ws' %}">My Workouts</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'exercise:profile' %}">My Profile</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'exercise:badges' %}">My Badges</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'exercise:leaderboard' %}">Leaderboard</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href = "{% url 'exercise:posts' %}">Community Posts</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href = "{% url 'exercise:weather' %}">Current Weather</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href = "{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--Navbar Ends-->

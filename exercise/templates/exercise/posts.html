@@ -1,0 +1,82 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html>
+
+
+
+<head>
+    <center>
+        <h2>COMMUNITY POSTS</h2>
+        <p>Learn about tips and tricks to lead a healthier lifestyle from other users!</p>
+    </center>
+    <style>
+        .bg-img {
+            background-image: none;
+            background-color: rgb(213, 236, 243);
+        }
+
+        div.transbox {
+            margin: 30 px;
+            background-color: #ffffff;
+            border: 5px solid black;
+            border-style: double;
+            opacity: 1.0;
+        }
+
+        div.transbox p {
+            margin: 1%;
+            color: black;
+        }
+    </style>
+</head>
+
+<center>
+    <h5 class="nav-item active">
+        <button type="submit"><a style="text-decoration: none; color:black;" href="{% url 'exercise:new_post' %}">Log New Post</a></button>
+    </h5>
+</center>
+
+
+
+<body class="bg-img">
+    {% for post in posts %}
+    <!-- 
+    Title: Django if statement doesn't work as expected
+    Author: Ali Akhtari
+    Date: 04/29/21
+    URL: https://stackoverflow.com/questions/15009712/django-if-statement-doesnt-work-as-expected 
+    -->
+    {% if username|stringformat:"s" == post.created_by.username %}
+    <div class="transbox" style="background-color:rgb(182, 224, 238);">
+        <p>
+            <em><b>You posted on</b></em>
+            <em>{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</em>
+        <!-- 
+        Title: word-break
+        Author: MDN Web Docs
+        Date: 04/29/21
+        URL: https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+        -->
+        <div style="word-break:break-word; margin-left: 25px; margin-right: 25px;">{{ post.contents }}</div>
+        </p>
+        <div align="center">
+            <button type="submit"><a style="text-decoration: none; color:black;" href="{% url 'exercise:delete_post' post.id  %}">Delete Post</a></button>
+        </div>
+    </div>
+    {% else %}
+    <div class="transbox" style="background-color:rgb(189, 255, 189);">
+        <p>
+            <em><b>@{{ post.created_by.username }}</b></em>
+            <em>{{ post.created_at|date:"SHORT_DATETIME_FORMAT" }}</em>
+        <div style="word-break:break-word; margin-left: 25px; margin-right: 25px;">{{ post.contents }}</div>
+        </p>
+    </div>
+    {% endif %}
+    <br>
+    {% endfor %}
+</body>
+
+</html>
+
+{% endblock %}

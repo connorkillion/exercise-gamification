@@ -1,0 +1,50 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html>
+<head>
+    <center><h2>PROFILE</h2></center>
+    <style>
+div.transbox {
+    margin: 20 px;
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-style: double;
+    opacity: 1.0;
+}
+div.transbox p {
+    margin: 1%;
+    color: black;
+}
+</style>
+</head>
+<div class="transbox" align="center">
+    <div style="width: 58%;">
+        <div style="width: 50%; height: 30px; float: left;">
+            <b>First Name: </b><i>{{ user.first_name }}</i>
+        </div>
+        <div style="margin-left: 30%; height: 30px;">
+            <b>Last Name: </b><i>{{ user.last_name }}</i>
+        </div>
+    </div>
+    <div align="center">
+        <b>Username: </b><i>{{ user.username }}</i>
+    </div>
+    <div align="center">
+        <b>Email: </b><i>{{ user.email }}</i>
+    </div>
+    <div align="center">
+        <b>Current Location: </b> {{ user.profile.current_location }}
+    </div>
+
+    <div>
+    </div>
+
+
+    <br>
+    <b>Total Points: </b><a style="text-decoration:underline" href="{% url 'exercise:my_ws' %}">{{ total_points.total_points }} </a>
+
+
+</center>
+</div>
+{% endblock %}

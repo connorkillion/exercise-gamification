@@ -1,0 +1,18 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .asteriskField {
+        display: none;
+    }
+</style>
+<center><h2>EDIT PROFILE</h2></center>
+<center>
+    <form action="{% url 'exercise:editprofile' %}" method="post">
+        {% csrf_token %}
+        {{ u_form | crispy }}
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</center>
+{% endblock %}

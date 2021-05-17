@@ -1,0 +1,20 @@
+{% extends 'exercise/base.html' %}
+{% block content %}
+
+<head>
+    <div align="center">
+        <h2>DO YOU WANT TO DELETE THIS WORKOUT?</h2>
+    </div>
+</head>
+<body>
+<center><h5>This action cannot be undone.</h5></center>
+<div align='center'>
+    <form method="POST" action="">
+    {% csrf_token %}
+    <input type="submit" value="Yes"/>
+    <a href="{% url 'exercise:my_ws' %}">Cancel </a>
+    </form>
+</div>
+</body>
+
+{% endblock %}

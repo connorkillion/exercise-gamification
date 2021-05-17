@@ -1,0 +1,33 @@
+.bg-img {
+  background-image: url("Outdoors.jpg");
+
+  min-height: 800px;
+
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
+
+  position: relative;
+}
+
+.container {
+  position: absolute-center;
+  margin: 0;
+  width: 2000px;
+}
+
+.topnav {
+  overflow: hidden;
+  font-size: 40px;
+}
+
+.mednav {
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.rightnav {
+    overflow: hidden;
+    font-size: 18px;
+}
+

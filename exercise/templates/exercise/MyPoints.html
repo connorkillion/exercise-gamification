@@ -1,0 +1,20 @@
+{% block content %}
+<html>
+<body>
+<center><h>MY POINTS PAGE</h>
+<br>
+<a href="{% url 'exercise:log_new' %}">Log Workout</a>
+<a href="{% url 'exercise:my_ws' %}">My Workouts</a>
+<a href="{% url 'exercise:profile' %}">My Profile</a>
+    <a href = "{% url 'logout' %}">Logout</a>
+<br>
+<br>
+    <b>Total Points:</b>
+    {% for wk in exercise %}
+    <p>{{wk.points}}</p>
+    {% endfor %}
+    <br> </center>
+</body>
+
+</html>
+{% endblock %}

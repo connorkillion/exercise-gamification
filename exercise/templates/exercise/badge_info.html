@@ -1,0 +1,53 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <center><h2>Badge Information</h2></center>
+<style>
+div.transbox {
+    margin: 30 px;
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-style: double;
+    opacity: 1.0;
+}
+div.transbox p {
+    margin: 1%;
+    font-weight: bold;
+    color: black;
+}
+a:link {
+    color: black;
+}
+div.badgebox {
+  float: left;
+  width: 50%; /* three boxes (use 25% for four, and 50% for two, etc) */
+  padding: 50px; /* if you want space between the images */
+  height: 300px;
+}
+
+</style>
+</head>
+<body>
+<div class="transbox" align="left">
+    <ul style="list-style-type: lower-roman">
+        <li><b>Points Badge:</b> Get points by logging your workouts! Remember: outdoor workouts get bonus points!</li>
+        <ul>
+            <li style="color:#CD7F32;">Bronze Badge: 200 points</li>
+            <li style="color:gray;">Silver Badge: 500 points</li>
+            <li style="color:gold;">Gold Badge: 1000 points</li>
+        </ul>
+    <br>
+        <li><b>Consistency Badge:</b> Log a workout for consecutive days to get a streak! But be careful: forget to log for a day and your streak goes back to zero!</li>
+        <ul>
+            <li style="color:#CD7F32;">Bronze Badge: 5 day streak</li>
+            <li style="color:gray;">Silver Badge: 10 day streak</li>
+            <li style="color:gold;">Gold Badge: 20 day streak</li>
+        </ul>
+    </ul>
+</div>
+</body>
+{% endblock %}
+</html>

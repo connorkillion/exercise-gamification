@@ -1,0 +1,62 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html>
+<head>
+    <center><h2>Want to know what the weather is like?</h2>
+        <br>
+    </center>
+    <style>
+div.transbox {
+    margin: 0 px;
+    background-color: #ffffff;
+
+    opacity: 1.0;
+}
+div.transbox b {
+    margin: 1%;
+    color: black;
+}
+</style>
+</head>
+
+<body>
+
+<center>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.name }}
+        <br>
+        <br>
+        <input type="submit" value="Get Weather in City">
+    </form>
+</center>
+<div class="transbox" align="center">
+<body>
+
+{% for weather in weather_data %}
+<div style="width:25%; margin: 0px auto;">
+    <article class="media">
+        <div class="media-left">
+            <figure class="image is-50x50">
+                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+            </figure>
+        </div>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                <span class="title">{{ weather.city }}</span>
+                <br>
+                <span class="subtitle">{{ weather.temperature }}° F</span>
+                <br> {{ weather.description }}
+                </p>
+            </div>
+        </div>
+    </article>
+</div>
+{% endfor %}
+
+</body>
+</div>
+{% endblock %}

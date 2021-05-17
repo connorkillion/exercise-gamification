@@ -1,0 +1,16 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<center><h2>LOG IN TO EXERCISE GAMIFICATION</h2>
+<br>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <br>
+    <input type="submit" value="Login">
+</form>
+
+<b>Need an account? </b><a href="{% url 'register' %}">Sign Up Now</a>
+{% endblock %}
+</center>

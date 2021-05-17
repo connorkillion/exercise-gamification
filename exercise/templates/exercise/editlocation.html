@@ -1,0 +1,42 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    ul {
+        text-align: center;
+        margin: 0px;
+        list-style-type: none;
+        padding 0px;
+    }
+
+    ul li {
+        display: inline;
+    }
+
+    .asteriskField {
+        display: none;
+    }
+</style>
+<center><h2>EDIT LOCATION</h2></center>
+<center>
+    <form action="{% url 'exercise:editlocation' %}" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+
+        <input type="submit" value="Update">
+        <br>
+        <br>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div>{{ message }}</div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </form>
+</center>
+{% endblock %}

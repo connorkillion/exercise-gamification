@@ -1,0 +1,22 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html>
+<body>
+<center>
+    <h2>NEW POST</h2>
+    <p>Post any tips, tricks, or accomplishments you would like to share with the community!</p>
+    <form action="{% url 'exercise:new_post' %} " method="POST">
+        {% csrf_token %}
+    
+        {{ form.contents }}
+        <br>
+        <br>
+        <input type="submit" value="Share and View All Posts" />
+    </form>
+    
+    
+</center>
+</body>
+</html>
+{% endblock %}

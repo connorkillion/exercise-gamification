@@ -1,0 +1,12 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if total_points.total_points >= 1000 %}
+<b>You have reached the gold level!</b>
+{% elif total_points.total_points >= 750 %}
+<b>You have reached the silver level!</b>
+{% elif total_points.total_points >= 500 %}
+<b>You have reached the bronze level!</b>
+{% endif %}
+{% endblock %}

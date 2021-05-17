@@ -1,0 +1,92 @@
+{% extends 'exercise/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <center><h2>MY BADGES</h2>
+    <p>See all the badges you have earned from working out!</p></center>
+<style>
+div.transbox {
+    margin: 30 px;
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-style: double;
+    opacity: 1.0;
+}
+div.transbox p {
+    margin: 1%;
+    font-weight: bold;
+    color: black;
+}
+a:link {
+    color: black;
+}
+
+div.badgebox {
+  float: left;
+  width: 50%; /* three boxes (use 25% for four, and 50% for two, etc) */
+  padding: 50px; /* if you want space between the images */
+  height: 300px;
+}
+
+</style>
+</head>
+
+<div class="badgebox" align="center">
+<div class="transbox" align="center">
+    <b style="text-decoration:underline;">POINTS BADGE</b>
+    <br>
+<b>Total Points: </b>{{ total_points.total_points }}
+    <br>
+    <br>
+    {% if total_points.total_points > 1000 %}
+    <div class="background">
+        <img src="{% static 'GoldPointsBadge.png' %}" width="100" height="100">
+    </div>
+    <i>Gold Badge</i>
+    {% elif total_points.total_points > 500 %}
+    <div class="background">
+        <img src="{% static 'SilverPointsBadge.png' %}" width="100" height="100">
+    </div>
+    <i>Silver Badge</i>
+    {% elif total_points.total_points > 200 %}
+    <div class="background">
+        <img src="{% static 'BronzePointsBadge.png' %}" width="100" height="100">
+    </div>
+    <i>Bronze Badge</i>
+
+    {% endif %}
+</div>
+</div>
+
+<div class="badgebox" align="center">
+<div class="transbox" align="center">
+    <b style="text-decoration:underline;">CONSISTENCY BADGE</b>
+    <br>
+<b>Total Day Streak: </b>{{ streak }}
+    <br>
+    <br>
+    {% if streak >= 20 %}
+    <div class="background">
+        <img src="{% static 'GoldStreakBadge.png' %}" width="100" height="100">
+    </div>
+    <i>Gold Badge: Streak</i>
+    {% elif streak >= 10 %}
+    <div class="background">
+        <img src="{% static 'SilverStreakBadge.png' %}" width="100" height="100">
+    </div>
+    <i>Silver Badge: Streak</i>
+    {% elif streak >= 5 %}
+    <div class="background">
+        <img src="{% static 'BronzeStreakBadge.png' %}" width="100" height="100">
+    </div>
+    <i>Bronze Badge: Streak</i>
+    {% endif %}
+</div>
+</div>
+
+<center><button type="submit"><a style="text-decoration: none; color:black;" href="{% url 'exercise:new_post' %}">Share My Accomplishments!</a></button></center>
+
+{% endblock %}
+</html>

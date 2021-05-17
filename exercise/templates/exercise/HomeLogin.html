@@ -1,0 +1,83 @@
+{% extends 'exercise/base.html' %}
+{% load socialaccount %}
+{% load static %}
+
+<html>
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+<head>
+    <center><title>Exercise Gamification Login</title></center>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"
+  </head>
+
+<body>
+<div class="bg-img">
+{% block content %}
+  <div class="container">
+    <div class="topnav">
+        <h2><b><center>Welcome to Exercise Gamification!</center></b></h2>
+    </div>
+    <div class="mednav">
+        <center><p>Log your Exercises! | Better Yourself! | Compete with Others!</p></center>
+    </div>
+  </div>
+  <center>
+
+  <div class="container">
+      <div class="rightnav">
+
+        {% if user.is_authenticated %}
+            <center><p style="font-size:22px; color: black;">Hello, {{ user.username }}!</p></center>
+
+        {% else %}
+            <h2><center><a style="text-decoration: underline" href="{% provider_login_url 'google' %}">Login with Google</a></center></h2>
+
+        {% endif %}
+
+    </div>
+  </div>
+  <div class="circle">
+      <center><b style="font-size:18px; color:green;">The current weather in {{ weather.city }}: </b> {{ weather.temperature }} ° F and {{ weather.description }}</center>
+      <br>
+      {% if 'rain' in weather.description and 'snow' in weather.description %}
+      <b style="color:darkblue">Its snowing and raining! Probably best to workout inside today! Maybe on the treadmill or elliptical!</b>
+      {% elif 'snow' in weather.description %}
+      <b style="color:darkblue">Its snowing! Unless you're planning to ski or snowboard, it's probably best to workout inside today!</b>
+      {% elif 'rain' in weather.description or 'mist' in weather.description or 'thunderstorm' in weather.description %}
+      <b style="color:darkblue">It might be raining, but don't let that stop you from working out inside on the treadmill or something else instead!</b>
+      {% elif weather.temperature >= 80 %}
+      <b style="color:darkblue">It's a little hot to workout outside right now, but don't let that stop you from working out inside instead!</b>
+      {% elif weather.temperature > 65 %}
+      <b style="color:darkblue">The weather is nice right now! It's a good day to workout outside! Maybe go for a run or a nice walk!</b>
+      {% elif weather.temperature >= 50 %}
+      <b style="color:darkblue">Grab a jacket and consider heading outside for a workout today!</b>
+      {% elif weather.temperature < 50 and weather.temperature >= 44 %}
+      <b style="color:darkblue">It's a bit cool outside, but it isn't raining. Why not do a workout outside today!</b>
+      {% elif weather.temperature < 44 %}
+      <b style="color:darkblue">It's a bit too cold to workout outside right now, but don't let that stop you from working out inside instead! Treadmill? Yoga? Stationary Bike?</b>
+      {% endif %}
+  </div>
+
+  {% if user_workouts.user_points.total_points != none %}
+      <br>
+    <b>Most Recent Workout: </b><b style="font-weight:normal;">Your last logged workout was {{user_workouts.user_exercise.exercise_type}} on {{user_workouts.user_exercise.exercise_date}}!</b>
+      <br>
+      <b>Total Points:</b> <i>{{user_workouts.user_points.total_points}}</i>
+  {% endif %}
+
+  {% endblock %}
+  </center>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>
